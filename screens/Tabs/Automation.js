@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
-const Analytics = () => {
+const Automation = () => {
   return (
     <View style={styles.container}>
       <Text>Analytics</Text>
@@ -15,4 +15,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Analytics;
+export default Automation;

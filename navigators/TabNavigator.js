@@ -1,5 +1,5 @@
 import React from 'react';
-import Analytics from '../screens/Tabs/Analytics';
+import Automation from '../screens/Tabs/Automation';
 import Home from '../screens/Tabs/Home';
 import Usage from '../screens/Tabs/Usage';
 import BottomTab from '../components/BottomTab';
@@ -27,8 +27,8 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Analytics"
-        component={Analytics}
+        name="Automation"
+        component={Automation}
         options={{
           tabBarIcon: ({ color, size }) => (
             <AnalyticIcon color={color} size={size} />
