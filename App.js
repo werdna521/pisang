@@ -8,7 +8,7 @@ import { colors } from './utils/variables';
 const App = () => {
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor={colors.secondary} barStyle="dark-content" />
+      <StatusBar backgroundColor={colors.white} barStyle="dark-content" />
       <RootNavigator />
     </NavigationContainer>
   );

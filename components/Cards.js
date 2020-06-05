@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Text, Switch } from 'react-native';
 import {
   colors,
@@ -37,7 +37,9 @@ export const MainCard = ({ style = {}, data }) => {
               true: colors.primary,
               false: colors.primary,
             }}
-            onValueChange={(value) => _setSwitchState(value)}
+            onValueChange={(value) => {
+              _setSwitchState((prevState) => !prevState);
+            }}
           />
         </View>
       </View>
@@ -46,14 +48,14 @@ export const MainCard = ({ style = {}, data }) => {
 };
 
 const cardShadowSettings = (height) => ({
-  width: getScreenWidth() / 2 - 2 * dimens.d12,
+  width: getScreenWidth() / 2 - 2 * dimens.d6,
   height,
   color: colors.black,
-  opacity: 0.01,
-  border: 50,
+  opacity: 0.04,
+  border: 32,
   radius: rounded.none,
   x: 0,
-  y: 40,
+  y: 24,
 });
 
 const styles = StyleSheet.create({

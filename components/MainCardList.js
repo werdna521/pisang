@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { dimens } from '../utils/variables';
 import { MainCard } from './Cards';
+import { getScreenWidth } from '../utils/dimensions';
 
 const parseData = (data) => {
   const arr = [];
@@ -15,17 +16,17 @@ const parseData = (data) => {
       arr.push(innerArr);
     }
   });
-  if (innerArr.length > 0) {
+  if (innerArr.length === 1) {
     arr.push(innerArr);
   }
   return arr;
 };
 
-const MainCardList = ({ data }) => {
+const MainCardList = ({ data, style }) => {
   const parsedData = parseData(data);
 
   return (
-    <View>
+    <View style={{ ...styles.mainContainer, ...style }}>
       {parsedData.map((dt, i) => (
         <View key={`#outer-container-${i}`} style={styles.rowContainer}>
           {dt.map((d, idx) => (
@@ -42,12 +43,15 @@ const MainCardList = ({ data }) => {
 };
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    marginBottom: dimens.d4,
+  },
   rowContainer: {
     flexDirection: 'row',
   },
   card: {
-    flexGrow: 1,
-    marginHorizontal: dimens.d1,
+    width: getScreenWidth() / 2 - 2 * dimens.d8,
+    marginHorizontal: dimens.d2,
     marginVertical: dimens.d4,
   },
 });

@@ -3,9 +3,9 @@ import { View, StyleSheet, Image, TouchableNativeFeedback } from 'react-native';
 import { rounded, sizes, icons, dimens, colors } from '../utils/variables';
 import { AddIcon } from './Icons';
 
-const ActionBar = () => {
+const ActionBar = ({ style }) => {
   return (
-    <View style={styles.container}>
+    <View style={{ ...styles.container, ...style }}>
       <Image
         style={styles.profileImage}
         borderRadius={rounded.full}
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    backgroundColor: colors.white,
   },
   profileImage: {
     width: sizes.profile,
