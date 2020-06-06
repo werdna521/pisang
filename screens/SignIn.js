@@ -7,31 +7,27 @@ import {
   statusCodes,
   GoogleSigninButton,
 } from '@react-native-community/google-signin';
+import { API } from 'aws-amplify';
 
 const SignIn = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
     GoogleSignin.configure();
+
+    // TODO refactor and extract code to repositories
+    // this is the code to fetch temperature and humidity sensor via api
+    // API.get('api4d260a1f', '/api/temp-hum/get-latest')
+    //   .then(result => console.log(result))
+    //   .catch(err => console.log(err));
   }, []);
 
   const signInWithGoogle = async () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      console.log('hi');
-      console.log(JSON.stringify(userInfo));
     } catch (error) {
-      console.log(JSON.stringify(error));
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-        console.log('canceled');
-      } else if (error.code === statusCodes.IN_PROGRESS) {
-        console.log('fail on progress');
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-        console.log('play service not available');
-      } else {
-        console.log('ngeri');
-      }
+      console.log(error);
     }
     navigation.navigate('Tab');
   };
