@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, Image, TouchableNativeFeedback } from 'react-native';
+import { connect } from 'react-redux';
+import { addHomeDevice } from '../redux/actions/home.action';
 import { rounded, sizes, icons, dimens, colors } from '../utils/variables';
 import { AddIcon } from './Icons';
 
-const ActionBar = ({ style }) => {
+const ActionBar = ({ style, addDevice }) => {
   return (
     <View style={{ ...styles.container, ...style }}>
       <Image
@@ -13,7 +15,7 @@ const ActionBar = ({ style }) => {
         source={require('../assets/img/banana.jpg')}
       />
       <TouchableNativeFeedback
-        onPress={() => console.log('hebat')}
+        onPress={() => addDevice({ label: 'New Device', value: 'Off' }, 1)}
         background={TouchableNativeFeedback.Ripple(colors.muted, true)}
         useForeground
       >
@@ -42,4 +44,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ActionBar;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addDevice: (newDevice, index) => dispatch(addHomeDevice(newDevice, index)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ActionBar);

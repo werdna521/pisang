@@ -35,7 +35,7 @@ export const MainCard = ({ style = {}, data }) => {
             thumbColor={colors.white}
             trackColor={{
               true: colors.primary,
-              false: colors.primary,
+              false: colors.disabled,
             }}
             onValueChange={(value) => {
               _setSwitchState((prevState) => !prevState);

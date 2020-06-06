@@ -12,55 +12,7 @@ const Home = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <HelloMessage style={styles.marginOnTop} name="Xiao Ming Huang" />
-          <DeviceList
-            style={styles.marginOnTop}
-            data={[
-              [
-                {
-                  label: 'Temp. / Humidity',
-                  value: '28°C / 77%',
-                },
-                {
-                  label: 'XN Air Conditioner',
-                  value: '28°C',
-                },
-                {
-                  label: 'Standing Fan',
-                  value: 'Off',
-                },
-                {
-                  label: 'Desk Light',
-                  value: 'Off',
-                },
-                {
-                  label: 'Ceiling Light',
-                  value: 'On',
-                },
-                {
-                  label: 'Standing Fan',
-                  value: 'Off',
-                },
-                {
-                  label: 'Desk Light',
-                  value: 'Off',
-                },
-                {
-                  label: 'Ceiling Light',
-                  value: 'On',
-                },
-              ],
-              [
-                {
-                  label: 'Ceiling Light',
-                  value: 'On',
-                },
-                {
-                  label: 'Washing Machine',
-                  value: 'Off',
-                },
-              ],
-            ]}
-          />
+          <DeviceList style={styles.marginOnTop} />
         </View>
       </ScrollView>
       <ActionBar style={styles.actionBar} />
@@ -92,5 +44,6 @@ const styles = StyleSheet.create({
     height: getScreenHeight(),
   },
 });
+
 
 export default Home;

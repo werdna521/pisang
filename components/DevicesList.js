@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 import MainCardList from './MainCardList';
 import { GreatWallOfNavigation } from './GreatWallOfNavigation';
 
-const DeviceList = ({ data, style }) => {
+const DeviceList = ({ style, home }) => {
   const [_active, _setActive] = useState(0);
 
   return (
@@ -13,11 +14,17 @@ const DeviceList = ({ data, style }) => {
         locations={['Bedroom', 'Toilet']}
         onChange={(i) => _setActive(i)}
       />
-      <MainCardList data={data[_active]} />
+      <MainCardList data={home ? home[_active] : []} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({});
 
-export default DeviceList;
+const mapStateToProps = (state) => {
+  return {
+    home: state.home,
+  };
+};
+
+export default connect(mapStateToProps)(DeviceList);

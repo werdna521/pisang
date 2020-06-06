@@ -50,6 +50,7 @@ export const icons = {
 export const colors = {
   primary: '#F57C00',
   primaryLight: '#F9983B',
+  disabled: '#A8A8A8',
   muted: '#838383',
   secondary: '#E5E5E5',
   white: '#FFF',
