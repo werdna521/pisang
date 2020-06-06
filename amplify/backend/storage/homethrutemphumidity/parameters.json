@@ -1,0 +1,5 @@
+{
+    "tableName": "homethru_temp_humidity",
+    "partitionKeyName": "uuid",
+    "partitionKeyType": "S"
+}

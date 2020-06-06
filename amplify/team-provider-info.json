@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-pisang-dev-150814-authRole",
+            "UnauthRoleArn": "arn:aws:iam::291092877551:role/amplify-pisang-dev-150814-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::291092877551:role/amplify-pisang-dev-150814-authRole",
+            "Region": "ap-southeast-1",
+            "DeploymentBucketName": "amplify-pisang-dev-150814-deployment",
+            "UnauthRoleName": "amplify-pisang-dev-150814-unauthRole",
+            "StackName": "amplify-pisang-dev-150814",
+            "StackId": "arn:aws:cloudformation:ap-southeast-1:291092877551:stack/amplify-pisang-dev-150814/e088cc50-a7cc-11ea-b17e-0ad08b3552b8",
+            "AmplifyAppId": "d3r2zrpet0ufr6"
+        }
+    }
+}

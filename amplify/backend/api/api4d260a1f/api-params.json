@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/api",
+            "lambdaFunction": "pisangfdfe61c2",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "api4d260a1f",
+    "apiName": "api4d260a1f",
+    "functionArns": [
+        {
+            "lambdaFunction": "pisangfdfe61c2"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-pisang-dev-150814-authRole",
+        "unAuthRoleName": "amplify-pisang-dev-150814-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "pisangfdfe61c2",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
