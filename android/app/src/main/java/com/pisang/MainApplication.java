@@ -7,6 +7,9 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.amazonaws.amplify.pushnotification.RNPushNotificationPackage;
+import com.amazonaws.RNAWSCognitoPackage;
+import com.amazonaws.amplify.pushnotification.RNPushNotificationPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -17,6 +20,7 @@ import java.util.Arrays;
 import org.unimodules.adapters.react.ModuleRegistryAdapter;
 import org.unimodules.adapters.react.ReactModuleRegistryProvider;
 import org.unimodules.core.interfaces.SingletonModule;
+import co.apptailor.googlesignin.RNGoogleSigninPackage;
 
 public class MainApplication extends Application implements ReactApplication {
   private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(new BasePackageList().getPackageList(), null);

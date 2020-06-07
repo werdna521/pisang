@@ -1,4 +1,10 @@
 rootProject.name = 'pisang'
+include ':@aws-amplify_pushnotification'
+project(':@aws-amplify_pushnotification').projectDir = new File(rootProject.projectDir, '../node_modules/@aws-amplify/pushnotification/android')
+include ':amazon-cognito-identity-js'
+project(':amazon-cognito-identity-js').projectDir = new File(rootProject.projectDir, '../node_modules/amazon-cognito-identity-js/android')
+include ':@aws-amplify_pushnotification'
+project(':@aws-amplify_pushnotification').projectDir = new File(rootProject.projectDir, '../node_modules/@aws-amplify/pushnotification/android')
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
 include ':app'
 apply from: '../node_modules/react-native-unimodules/gradle.groovy'
