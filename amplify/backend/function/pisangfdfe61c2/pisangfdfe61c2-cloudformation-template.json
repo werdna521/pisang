@@ -76,7 +76,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-pisang-dev-150814-deployment",
-					"S3Key": "amplify-builds/pisangfdfe61c2-4a2b444a4e6343304357-build.zip"
+					"S3Key": "amplify-builds/pisangfdfe61c2-79703433545472326266-build.zip"
 				}
 			}
 		},
