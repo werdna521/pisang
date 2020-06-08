@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   name: {
     color: colors.primary,
-    fontSize: texts.xl2,
+    fontSize: texts.xl3,
   },
 });
 

@@ -4,15 +4,17 @@ import { connect } from 'react-redux';
 import { rounded, sizes, icons, dimens, colors } from '../../utils/variables';
 import { AddIcon } from '../Icons/Icons';
 
-const ActionBar = ({ style, photo, add, onAdd }) => {
+const ActionBar = ({ style, photo, add, onAdd, pic, back }) => {
   return (
     <View style={{ ...styles.container, ...style }}>
-      <Image
-        style={styles.profileImage}
-        borderRadius={rounded.full}
-        resizeMode="cover"
-        source={{ uri: photo }}
-      />
+      {pic && !back && (
+        <Image
+          style={styles.profileImage}
+          borderRadius={rounded.full}
+          resizeMode="cover"
+          source={{ uri: photo }}
+        />
+      )}
       {add && (
         <TouchableNativeFeedback
           onPress={onAdd}

@@ -5,6 +5,7 @@ import ActionBar from '../../components/Bars/ActionBar';
 import HelloMessage from '../../components/Home/HelloMessage';
 import { getScreenHeight, getScreenWidth } from '../../utils/dimensions';
 import HomeEnvironment from '../../components/Home/HomeEnvironment';
+import SensorReading from '../../components/Home/SensorReading';
 
 const Home = () => {
   return (
@@ -12,10 +13,14 @@ const Home = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <HelloMessage style={styles.marginOnTop} />
+          <SensorReading
+            style={styles.marginOnTop}
+            sensors={[{ type: 'Ngeri', data: ['12 C', '77%'] }]}
+          />
           <HomeEnvironment style={styles.marginWideOnTop} />
         </View>
       </ScrollView>
-      <ActionBar style={styles.actionBar} />
+      <ActionBar style={styles.actionBar} onAdd={() => alert('ok')} add pic />
     </View>
   );
 };
@@ -35,16 +40,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     paddingHorizontal: dimens.d12,
     paddingTop: dimens.d28,
-    minHeight: getScreenHeight(),
+    minHeight: getScreenHeight() + 72,
   },
   marginOnTop: {
     marginTop: dimens.d8,
   },
   marginWideOnTop: {
-    marginTop: dimens.d16,
-  },
-  fullHeight: {
-    height: getScreenHeight(),
+    marginTop: dimens.d28,
   },
 });
 
