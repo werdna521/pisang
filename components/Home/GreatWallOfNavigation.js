@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import { colors, dimens, fonts, texts } from '../utils/variables';
+import { colors, dimens, fonts, texts } from '../../utils/variables';
 
 export const NavigationText = ({ text, active, onPress }) => {
   return (

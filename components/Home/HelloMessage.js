@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { colors, fonts, texts } from '../utils/variables';
+import { colors, fonts, texts } from '../../utils/variables';
 
 const HelloMessage = ({ name, style = {} }) => {
   return (

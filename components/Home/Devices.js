@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { dimens } from '../utils/variables';
-import { MainCard } from './Cards';
-import { getScreenWidth } from '../utils/dimensions';
+import { dimens } from '../../utils/variables';
+import { DeviceCard } from '../Cards/Cards';
+import { getScreenWidth } from '../../utils/dimensions';
 
 const parseData = (data) => {
   const arr = [];
@@ -22,7 +22,7 @@ const parseData = (data) => {
   return arr;
 };
 
-const MainCardList = ({ data, style }) => {
+const Devices = ({ data, style }) => {
   const parsedData = parseData(data);
 
   return (
@@ -30,7 +30,7 @@ const MainCardList = ({ data, style }) => {
       {parsedData.map((dt, i) => (
         <View key={`#outer-container-${i}`} style={styles.rowContainer}>
           {dt.map((d, idx) => (
-            <MainCard
+            <DeviceCard
               key={`#inner-container-${idx}-${d.label}`}
               style={styles.card}
               data={d}
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MainCardList;
+export default Devices;

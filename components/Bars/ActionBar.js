@@ -1,11 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, Image, TouchableNativeFeedback } from 'react-native';
 import { connect } from 'react-redux';
-import { addHomeDevice } from '../redux/actions/home.action';
-import { rounded, sizes, icons, dimens, colors } from '../utils/variables';
-import { AddIcon } from './Icons';
+import { rounded, sizes, icons, dimens, colors } from '../../utils/variables';
+import { AddIcon } from '../Icons/Icons';
 
-const ActionBar = ({ style, addDevice, photo }) => {
+const ActionBar = ({ style, photo, add, onAdd }) => {
   return (
     <View style={{ ...styles.container, ...style }}>
       <Image
@@ -14,15 +13,17 @@ const ActionBar = ({ style, addDevice, photo }) => {
         resizeMode="cover"
         source={{ uri: photo }}
       />
-      <TouchableNativeFeedback
-        onPress={() => addDevice({ label: 'New Device', value: 'Off' }, 1)}
-        background={TouchableNativeFeedback.Ripple(colors.muted, true)}
-        useForeground
-      >
-        <View style={styles.addIcon}>
-          <AddIcon size={icons.md} />
-        </View>
-      </TouchableNativeFeedback>
+      {add && (
+        <TouchableNativeFeedback
+          onPress={onAdd}
+          background={TouchableNativeFeedback.Ripple(colors.muted, true)}
+          useForeground
+        >
+          <View style={styles.addIcon}>
+            <AddIcon size={icons.md} />
+          </View>
+        </TouchableNativeFeedback>
+      )}
     </View>
   );
 };
@@ -50,10 +51,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addDevice: (newDevice, index) => dispatch(addHomeDevice(newDevice, index)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ActionBar);
+export default connect(mapStateToProps)(ActionBar);

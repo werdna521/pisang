@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { colors, dimens } from '../../utils/variables';
-import ActionBar from '../../components/ActionBar';
-import HelloMessage from '../../components/HelloMessage';
+import ActionBar from '../../components/Bars/ActionBar';
+import HelloMessage from '../../components/Home/HelloMessage';
 import { getScreenHeight, getScreenWidth } from '../../utils/dimensions';
-import DeviceList from '../../components/DevicesList';
+import HomeEnvironment from '../../components/Home/HomeEnvironment';
 
 const Home = () => {
   return (
@@ -12,7 +12,7 @@ const Home = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <HelloMessage style={styles.marginOnTop} />
-          <DeviceList style={styles.marginOnTop} />
+          <HomeEnvironment style={styles.marginWideOnTop} />
         </View>
       </ScrollView>
       <ActionBar style={styles.actionBar} />
@@ -39,6 +39,9 @@ const styles = StyleSheet.create({
   },
   marginOnTop: {
     marginTop: dimens.d8,
+  },
+  marginWideOnTop: {
+    marginTop: dimens.d16,
   },
   fullHeight: {
     height: getScreenHeight(),

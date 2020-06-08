@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Text, Switch } from 'react-native';
 import {
   colors,
@@ -7,12 +7,12 @@ import {
   texts,
   icons,
   fonts,
-} from '../utils/variables';
+} from '../../utils/variables';
 import { BoxShadow } from 'react-native-shadow';
-import { getScreenWidth } from '../utils/dimensions';
-import { TemperatureColored } from './Icons';
+import { getScreenWidth } from '../../utils/dimensions';
+import { TemperatureColored } from '../Icons/Icons';
 
-export const MainCard = ({ style = {}, data }) => {
+export const DeviceCard = ({ style = {}, data }) => {
   const [_switchState, _setSwitchState] = useState(false);
   const [_height, _setHeight] = useState(0);
 

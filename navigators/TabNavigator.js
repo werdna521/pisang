@@ -2,9 +2,10 @@ import React from 'react';
 import Automation from '../screens/Tabs/Automation';
 import Home from '../screens/Tabs/Home';
 import Usage from '../screens/Tabs/Usage';
-import BottomTab from '../components/BottomTab';
+import BottomTab from '../components/Bars/BottomTab';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { AnalyticIcon, HomeIcon, UsageIcon } from '../components/Icons';
+import { AnalyticIcon, HomeIcon, UsageIcon } from '../components/Icons/Icons';
+import { colors } from '../utils/variables';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,7 +15,7 @@ const TabNavigator = () => {
       back="none"
       tabBar={(props) => <BottomTab {...props} />}
       tabBarOptions={{
-        activeTintColor: '#F57C00',
+        activeTintColor: colors.primary,
       }}
     >
       <Tab.Screen

@@ -1,31 +1,39 @@
 import { ADD_HOME_DEVICE } from '../actions/home.action';
 
-const INITIAL_STATES = [
-  [
+const INITIAL_STATES = {
+  data: [
     {
-      label: 'Temp. / Humidity',
-      value: '28°C / 77%',
+      location: 'Bedroom',
+      devices: [
+        {
+          label: 'Temp. / Humidity',
+          value: '28°C / 77%',
+        },
+        {
+          label: 'XN Air Conditioner',
+          value: '28°C',
+        },
+        {
+          label: 'Standing Fan',
+          value: 'Off',
+        },
+      ],
     },
     {
-      label: 'XN Air Conditioner',
-      value: '28°C',
-    },
-    {
-      label: 'Standing Fan',
-      value: 'Off',
+      location: 'Toilet',
+      devices: [
+        {
+          label: 'Ceiling Light',
+          value: 'On',
+        },
+        {
+          label: 'Washing Machine',
+          value: 'Off',
+        },
+      ],
     },
   ],
-  [
-    {
-      label: 'Ceiling Light',
-      value: 'On',
-    },
-    {
-      label: 'Washing Machine',
-      value: 'Off',
-    },
-  ],
-];
+};
 
 const homeReducer = (state = INITIAL_STATES, action) => {
   switch (action.type) {

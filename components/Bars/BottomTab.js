@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { colors, dimens, icons, rounded, sizes } from '../utils/variables';
+import { colors, dimens, icons, rounded, sizes } from '../../utils/variables';
 import { BoxShadow } from 'react-native-shadow';
-import { getScreenWidth } from '../utils/dimensions';
+import { getScreenWidth } from '../../utils/dimensions';
 
 const BottomTab = ({ state, descriptors, navigation }) => {
   return (
