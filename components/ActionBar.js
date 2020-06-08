@@ -5,14 +5,14 @@ import { addHomeDevice } from '../redux/actions/home.action';
 import { rounded, sizes, icons, dimens, colors } from '../utils/variables';
 import { AddIcon } from './Icons';
 
-const ActionBar = ({ style, addDevice }) => {
+const ActionBar = ({ style, addDevice, photo }) => {
   return (
     <View style={{ ...styles.container, ...style }}>
       <Image
         style={styles.profileImage}
         borderRadius={rounded.full}
         resizeMode="cover"
-        source={require('../assets/img/banana.jpg')}
+        source={{ uri: photo }}
       />
       <TouchableNativeFeedback
         onPress={() => addDevice({ label: 'New Device', value: 'Off' }, 1)}
@@ -44,10 +44,16 @@ const styles = StyleSheet.create({
   },
 });
 
+const mapStateToProps = (state) => {
+  return {
+    photo: state.session.userProfile.photo,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     addDevice: (newDevice, index) => dispatch(addHomeDevice(newDevice, index)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(ActionBar);
+export default connect(mapStateToProps, mapDispatchToProps)(ActionBar);

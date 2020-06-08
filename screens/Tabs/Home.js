@@ -11,7 +11,7 @@ const Home = () => {
     <View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
-          <HelloMessage style={styles.marginOnTop} name="Xiao Ming Huang" />
+          <HelloMessage style={styles.marginOnTop} />
           <DeviceList style={styles.marginOnTop} />
         </View>
       </ScrollView>

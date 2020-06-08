@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux';
 import { colors, fonts, texts } from '../utils/variables';
 
 const HelloMessage = ({ name, style = {} }) => {
@@ -19,12 +20,18 @@ const styles = StyleSheet.create({
   },
   welcomeMessage: {
     color: colors.darker,
-    fontSize: texts.lg,
+    fontSize: texts.xl,
   },
   name: {
     color: colors.primary,
-    fontSize: texts.xl,
+    fontSize: texts.xl2,
   },
 });
 
-export default HelloMessage;
+const mapStateToProps = (state) => {
+  return {
+    name: state.session.userProfile.name,
+  };
+};
+
+export default connect(mapStateToProps)(HelloMessage);

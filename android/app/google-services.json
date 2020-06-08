@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "227803174662-1s66v3r03u307rpt6ro3ii14tt1nk6ac.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pisang",
+            "certificate_hash": "974c4d9848a4211622d03d648e10045a451c27ab"
+          }
+        },
+        {
           "client_id": "227803174662-hpqe6r79ekjmj1pi57ptgklia0bjam3a.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
