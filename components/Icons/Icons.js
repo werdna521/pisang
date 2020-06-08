@@ -1,5 +1,6 @@
 import React from 'react';
 import Feather from 'react-native-vector-icons/Feather';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { StyleSheet, View } from 'react-native';
 import { colors, dimens, rounded } from '../../utils/variables';
 
@@ -23,6 +24,39 @@ export const TemperatureIcon = ({ size, color, style }) => {
   return <Feather name="thermometer" size={size} color={color} style={style} />;
 };
 
+export const TimeIcon = ({ size, color, style }) => {
+  return (
+    <MaterialCommunityIcons
+      name="clock-outline"
+      size={size}
+      color={color}
+      style={style}
+    />
+  );
+};
+
+export const MotionIcon = ({ size, color, style }) => {
+  return (
+    <MaterialCommunityIcons
+      name="motion-sensor"
+      size={size}
+      color={color}
+      style={style}
+    />
+  );
+};
+
+export const SecurityIcon = ({ size, color, style }) => {
+  return (
+    <MaterialCommunityIcons
+      name="security"
+      size={size}
+      color={color}
+      style={style}
+    />
+  );
+};
+
 const ColoredIcon = ({ size, style, icon }) => {
   return (
     <View
@@ -42,10 +76,45 @@ export const TemperatureColored = ({ size, style }) => {
     <ColoredIcon
       size={size}
       style={style}
-      icon={<TemperatureIcon size={size} color={colors.white} />}
+      icon={TemperatureIcon(coloredIcons(size))}
     />
   );
 };
+
+export const SecurityColored = ({ size, style }) => {
+  return (
+    <ColoredIcon
+      size={size}
+      style={style}
+      icon={SecurityIcon(coloredIcons(size))}
+    />
+  );
+};
+
+export const TimeColored = ({ size, style }) => {
+  return (
+    <ColoredIcon
+      size={size}
+      style={style}
+      icon={TimeIcon(coloredIcons(size))}
+    />
+  );
+};
+
+export const MotionColored = ({ size, style }) => {
+  return (
+    <ColoredIcon
+      size={size}
+      style={style}
+      icon={MotionIcon(coloredIcons(size))}
+    />
+  );
+};
+
+const coloredIcons = (size) => ({
+  color: colors.white,
+  size,
+});
 
 const iconSizingMixin = (size) => ({
   width: size,

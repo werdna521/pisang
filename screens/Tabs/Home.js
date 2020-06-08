@@ -3,7 +3,7 @@ import { View, StyleSheet, ScrollView } from 'react-native';
 import { colors, dimens } from '../../utils/variables';
 import ActionBar from '../../components/Bars/ActionBar';
 import HelloMessage from '../../components/Home/HelloMessage';
-import { getScreenHeight, getScreenWidth } from '../../utils/dimensions';
+import { getScreenHeight } from '../../utils/dimensions';
 import HomeEnvironment from '../../components/Home/HomeEnvironment';
 import SensorReading from '../../components/Home/SensorReading';
 
@@ -12,7 +12,7 @@ const Home = () => {
     <View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
-          <HelloMessage style={styles.marginOnTop} />
+          <HelloMessage />
           <SensorReading
             style={styles.marginOnTop}
             sensors={[{ type: 'Ngeri', data: ['12 C', '77%'] }]}
@@ -20,18 +20,12 @@ const Home = () => {
           <HomeEnvironment style={styles.marginWideOnTop} />
         </View>
       </ScrollView>
-      <ActionBar style={styles.actionBar} onAdd={() => alert('ok')} add pic />
+      <ActionBar onAdd={() => alert('ok')} add pic />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  actionBar: {
-    position: 'absolute',
-    paddingVertical: dimens.d4,
-    paddingHorizontal: dimens.d12,
-    width: getScreenWidth(),
-  },
   scroll: {
     backgroundColor: colors.white,
   },
@@ -39,7 +33,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.white,
     paddingHorizontal: dimens.d12,
-    paddingTop: dimens.d28,
+    paddingTop: dimens.d36,
     minHeight: getScreenHeight() + 72,
   },
   marginOnTop: {

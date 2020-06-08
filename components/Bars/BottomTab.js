@@ -45,7 +45,9 @@ const BottomTab = ({ state, descriptors, navigation }) => {
                   })
                 : null}
               <Text
-                style={isFocused ? styles.textColorActive : styles.textColorIdle}
+                style={
+                  isFocused ? styles.textColorActive : styles.textColorIdle
+                }
               >
                 {label}
               </Text>
@@ -62,10 +64,10 @@ const shadowBoxSettings = {
   height: sizes.bottomTabHeight,
   color: colors.black,
   opacity: 0.06,
-  border: 50,
+  border: 100,
   radius: rounded.none,
   x: 0,
-  y: 100,
+  y: 40,
 };
 
 const styles = StyleSheet.create({

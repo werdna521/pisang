@@ -7,17 +7,23 @@ import { colors, icons } from '../../utils/variables';
 const iconOptions = { size: icons.sm, color: colors.darker };
 
 const SensorReading = ({ style, sensors }) => {
-  const renderAccordingly = (type, value) => {
+  const renderAccordingly = (type, value, i) => {
     switch (type) {
       default:
-        return <Sensor icon={TemperatureIcon(iconOptions)} value={value} />;
+        return (
+          <Sensor
+            key={`#sensor-${type}-${i}`}
+            icon={TemperatureIcon(iconOptions)}
+            value={value}
+          />
+        );
     }
   };
 
   return (
     <View style={[styles.container, style]}>
-      {sensors.map(({ type, data }) =>
-        renderAccordingly(type, data.join(' / ')),
+      {sensors.map(({ type, data }, i) =>
+        renderAccordingly(type, data.join(' / '), i),
       )}
     </View>
   );

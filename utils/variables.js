@@ -28,6 +28,14 @@ export const dimens = {
   d26: 52,
   d27: 54,
   d28: 56,
+  d29: 58,
+  d30: 60,
+  d31: 62,
+  d32: 64,
+  d33: 66,
+  d34: 68,
+  d35: 70,
+  d36: 72,
 };
 
 export const texts = {
@@ -55,6 +63,7 @@ export const colors = {
   secondary: '#E5E5E5',
   white: '#FFF',
   darker: '#151B3A',
+  caption: '#464646',
   dark: '#53576F',
   black: '#000',
 };

@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
   welcomeMessage: {
     color: colors.darker,
-    fontSize: texts.xl,
+    fontSize: texts.lg,
   },
   name: {
     color: colors.primary,

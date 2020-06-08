@@ -3,10 +3,12 @@ import { View, StyleSheet, Image, TouchableNativeFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import { rounded, sizes, icons, dimens, colors } from '../../utils/variables';
 import { AddIcon } from '../Icons/Icons';
+import { getScreenWidth } from '../../utils/dimensions';
 
 const ActionBar = ({ style, photo, add, onAdd, pic, back }) => {
   return (
-    <View style={{ ...styles.container, ...style }}>
+    <View style={[style, styles.container]}>
+      {!pic && !back && <View style={styles.profileImage} />}
       {pic && !back && (
         <Image
           style={styles.profileImage}
@@ -36,6 +38,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: colors.white,
+    position: 'absolute',
+    paddingVertical: dimens.d4,
+    paddingHorizontal: dimens.d12,
+    width: getScreenWidth(),
   },
   profileImage: {
     width: sizes.profile,
