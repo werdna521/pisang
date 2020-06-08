@@ -1,20 +1,23 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
+import { connect } from 'react-redux';
+import { storeSession } from '../redux/actions/session.action';
 import { colors, dimens } from '../utils/variables';
-import { useNavigation } from '@react-navigation/native';
 import {
   GoogleSignin,
-  statusCodes,
   GoogleSigninButton,
 } from '@react-native-community/google-signin';
-import { API } from 'aws-amplify';
+import config from '../utils/config';
+import storage from '../utils/storage';
+import { getScreenWidth } from '../utils/dimensions';
 
-const SignIn = () => {
-  const navigation = useNavigation();
-
+const SignIn = ({ saveSession }) => {
   useEffect(() => {
-    GoogleSignin.configure();
-
+    GoogleSignin.configure({
+      webClientId: config.webClientId,
+      offlineAccess: true,
+      forceCodeForRefreshToken: true,
+    });
     // TODO refactor and extract code to repositories
     // this is the code to fetch temperature and humidity sensor via api
     // API.get('api4d260a1f', '/api/temp-hum/get-latest')
@@ -26,14 +29,29 @@ const SignIn = () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
+
+      const {
+        user: { email, photo, name },
+      } = userInfo;
+
+      const sessionPayload = { email, photo, name };
+      saveSession(sessionPayload);
+      await storage.storeSession({
+        authenticated: true,
+        userProfile: sessionPayload,
+      });
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
-    navigation.navigate('Tab');
   };
 
   return (
     <View style={styles.container}>
+      <Image
+        style={styles.logo}
+        resizeMode={'center'}
+        source={require('../assets/img/homethru.png')}
+      />
       <View style={styles.googleButton}>
         <GoogleSigninButton onPress={signInWithGoogle} />
       </View>
@@ -45,12 +63,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  logo: {
+    width: 0.75 * getScreenWidth(),
   },
   googleButton: {
-    position: 'absolute',
     alignItems: 'center',
-    bottom: dimens.d8,
+    marginBottom: dimens.d8,
   },
 });
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    saveSession: (userProfile) => dispatch(storeSession(userProfile)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(SignIn);
