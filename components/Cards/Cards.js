@@ -28,19 +28,21 @@ export const DeviceCard = ({ style = {}, data }) => {
         <TemperatureColored size={icons.sm} />
         <Text style={styles.cardLabel}>{data.label}</Text>
         <View style={styles.bottomContainer}>
-          <Text style={styles.cardValue}>{data.value}</Text>
-          <Switch
-            style={styles.switch}
-            value={_switchState}
-            thumbColor={colors.white}
-            trackColor={{
-              true: colors.primary,
-              false: colors.disabled,
-            }}
-            onValueChange={(value) => {
-              _setSwitchState((prevState) => !prevState);
-            }}
-          />
+          <Text style={styles.cardValue}>{data.data.join(' / ')}</Text>
+          {data.switch && (
+            <Switch
+              style={styles.switch}
+              value={_switchState}
+              thumbColor={colors.white}
+              trackColor={{
+                true: colors.primary,
+                false: colors.disabled,
+              }}
+              onValueChange={(value) => {
+                _setSwitchState((prevState) => !prevState);
+              }}
+            />
+          )}
         </View>
       </View>
     </BoxShadow>

@@ -2,13 +2,23 @@ import React from 'react';
 import { View, StyleSheet, Image, TouchableNativeFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import { rounded, sizes, icons, dimens, colors } from '../../utils/variables';
-import { AddIcon } from '../Icons/Icons';
+import { AddIcon, BackIcon } from '../Icons/Icons';
 import { getScreenWidth } from '../../utils/dimensions';
 
-const ActionBar = ({ style, photo, add, onAdd, pic, back }) => {
+const ActionBar = ({ style, photo, add, onAdd, pic, back, onBack }) => {
   return (
     <View style={[style, styles.container]}>
       {!pic && !back && <View style={styles.profileImage} />}
+      {back && (
+        <TouchableNativeFeedback
+          onPress={onBack}
+          background={TouchableNativeFeedback.Ripple(colors.muted, true)}
+        >
+          <View style={styles.icon}>
+            <BackIcon size={icons.md} />
+          </View>
+        </TouchableNativeFeedback>
+      )}
       {pic && !back && (
         <Image
           style={styles.profileImage}
@@ -21,9 +31,8 @@ const ActionBar = ({ style, photo, add, onAdd, pic, back }) => {
         <TouchableNativeFeedback
           onPress={onAdd}
           background={TouchableNativeFeedback.Ripple(colors.muted, true)}
-          useForeground
         >
-          <View style={styles.addIcon}>
+          <View style={styles.icon}>
             <AddIcon size={icons.md} />
           </View>
         </TouchableNativeFeedback>
@@ -47,9 +56,11 @@ const styles = StyleSheet.create({
     width: sizes.profile,
     height: sizes.profile,
   },
-  addIcon: {
-    padding: dimens.d2,
+  icon: {
     borderRadius: rounded.full,
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: sizes.profile,
   },
 });
 

@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { colors, dimens } from '../../utils/variables';
+import { addHomeSensor } from '../../redux/actions/home.action';
+import { connect } from 'react-redux';
 import ActionBar from '../../components/Bars/ActionBar';
 import HelloMessage from '../../components/Home/HelloMessage';
 import { getScreenHeight } from '../../utils/dimensions';
 import HomeEnvironment from '../../components/Home/HomeEnvironment';
 import SensorReading from '../../components/Home/SensorReading';
+import RepoFactory, { SENSOR } from '../../repositories/repository.factory';
 
-const Home = () => {
+const Home = ({ addSensor, sensors }) => {
+  useEffect(() => {
+    const fetchAsync = async () => {
+      const data = await RepoFactory.with(SENSOR).getTemperatureAndHumidity();
+      addSensor(data, 0);
+    };
+    fetchAsync().then();
+  }, []);
+
   return (
     <View>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -15,7 +26,7 @@ const Home = () => {
           <HelloMessage />
           <SensorReading
             style={styles.marginOnTop}
-            sensors={[{ type: 'Ngeri', data: ['12 C', '77%'] }]}
+            sensors={[...sensors[0]]}
           />
           <HomeEnvironment style={styles.marginWideOnTop} />
         </View>
@@ -44,4 +55,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    sensors: state.home.map(({ sensors }) => sensors.map((s) => s)),
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addSensor: (sensorData, i) => dispatch(addHomeSensor(sensorData, i)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

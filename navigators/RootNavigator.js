@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { createStackNavigator } from '@react-navigation/stack';
 import { storeSession } from '../redux/actions/session.action';
 import storage from '../utils/storage';
+import AutomationRules from '../screens/Tabs/Automation/AutomationRules';
 
 const Stack = createStackNavigator();
 
@@ -30,7 +31,10 @@ const RootNavigator = ({ authenticated, saveSession }) => {
       {!authenticated ? (
         <Stack.Screen name="SignUp" component={SignIn} />
       ) : (
-        <Stack.Screen name="Tab" component={TabNavigator} />
+        <>
+          <Stack.Screen name="Tab" component={TabNavigator} />
+          <Stack.Screen name="Automation/Rules" component={AutomationRules} />
+        </>
       )}
     </Stack.Navigator>
   );

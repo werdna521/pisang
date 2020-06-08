@@ -1,6 +1,6 @@
 import { STORE_SESSION } from '../actions/session.action';
 
-const INITIAL_STATE = {
+const INITIAL_STATES = {
   authenticated: false,
   userProfile: {
     email: '',
@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   },
 };
 
-const sessionReducer = (state = INITIAL_STATE, action) => {
+const sessionReducer = (state = INITIAL_STATES, action) => {
   switch (action.type) {
     case STORE_SESSION:
       return Object.assign(

@@ -20,6 +20,12 @@ export const AddIcon = ({ size, color, style }) => {
   return <Feather name="plus" size={size} color={color} style={style} />;
 };
 
+export const BackIcon = ({ size, color, style }) => {
+  return (
+    <Feather name="chevron-left" size={size} color={color} style={style} />
+  );
+};
+
 export const TemperatureIcon = ({ size, color, style }) => {
   return <Feather name="thermometer" size={size} color={color} style={style} />;
 };

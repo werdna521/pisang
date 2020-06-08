@@ -18,11 +18,6 @@ const SignIn = ({ saveSession }) => {
       offlineAccess: true,
       forceCodeForRefreshToken: true,
     });
-    // TODO refactor and extract code to repositories
-    // this is the code to fetch temperature and humidity sensor via api
-    // API.get('api4d260a1f', '/api/temp-hum/get-latest')
-    //   .then(result => console.log(result))
-    //   .catch(err => console.log(err));
   }, []);
 
   const signInWithGoogle = async () => {

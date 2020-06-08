@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Devices from './Devices';
 import { GreatWallOfNavigation } from './GreatWallOfNavigation';
 
-const DeviceList = ({ style, devices, locations }) => {
+const DeviceList = ({ style, devices, sensors, locations }) => {
   const [_active, _setActive] = useState(0);
 
   return (
@@ -14,7 +14,12 @@ const DeviceList = ({ style, devices, locations }) => {
         locations={locations}
         onChange={(i) => _setActive(i)}
       />
-      <Devices data={devices ? devices[_active] : []} />
+      <Devices
+        data={[
+          ...(sensors ? sensors[_active] : []),
+          ...(devices ? devices[_active] : []),
+        ]}
+      />
     </View>
   );
 };
@@ -23,8 +28,9 @@ const styles = StyleSheet.create({});
 
 const mapStateToProps = (state) => {
   return {
-    locations: state.home.data.map(({ location }) => location),
-    devices: state.home.data.map(({ devices }) => devices),
+    locations: state.home.map(({ location }) => location),
+    devices: state.home.map(({ devices }) => devices.map((d) => d)),
+    sensors: state.home.map(({ sensors }) => sensors.map((s) => s)),
   };
 };
 

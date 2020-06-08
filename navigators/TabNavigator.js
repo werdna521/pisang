@@ -1,5 +1,5 @@
 import React from 'react';
-import Automation from '../screens/Tabs/Automation';
+import Automation from '../screens/Tabs/Automation/Automation';
 import Home from '../screens/Tabs/Home';
 import Usage from '../screens/Tabs/Usage';
 import BottomTab from '../components/Bars/BottomTab';

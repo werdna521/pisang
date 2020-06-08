@@ -1,5 +1,5 @@
-export const ADD_HOME_DEVICE = 'ADD_HOME_DEVICE';
+export const ADD_HOME_SENSOR = 'ADD_HOME_SENSOR';
 
-export const addHomeDevice = (newDevice, index) => {
-  return { type: ADD_HOME_DEVICE, newDevice, index};
+export const addHomeSensor = (newSensor, index) => {
+  return { type: ADD_HOME_SENSOR, newSensor, index };
 };

@@ -13,12 +13,12 @@ import {
   TimeColored,
 } from '../Icons/Icons';
 import { colors, dimens, icons, texts } from '../../utils/variables';
-import { getScreenWidth } from '../../utils/dimensions';
+import { getScreenHeight, getScreenWidth } from '../../utils/dimensions';
 
 const iconOptions = { size: icons.lg };
 const commonFontFamilies = { fontFamily: 'Inter-Medium' };
 
-const ListItem = ({ data }) => {
+const ListItem = ({ data, onClick }) => {
   const renderIcon = () => {
     switch (data.type) {
       case 0:
@@ -36,7 +36,7 @@ const ListItem = ({ data }) => {
 
   return (
     <TouchableNativeFeedback
-      onPress={() => alert('adu dipencet')}
+      onPress={() => onClick && onClick()}
       background={TouchableNativeFeedback.Ripple(
         'rgba(200, 200, 200, 0.26)',
         false,
@@ -45,15 +45,21 @@ const ListItem = ({ data }) => {
       <View style={styles.listItemContainer}>
         {renderIcon()}
         <View style={styles.listItemTextContainer}>
-          <Text style={styles.listItemTitle}>{data.title}</Text>
-          <Text style={styles.listItemDesc}>{data.desc}</Text>
+          {data.content ? (
+            <Text style={styles.listItemContent}>{data.content}</Text>
+          ) : (
+            <>
+              <Text style={styles.listItemTitle}>{data.title}</Text>
+              <Text style={styles.listItemDesc}>{data.desc}</Text>
+            </>
+          )}
         </View>
       </View>
     </TouchableNativeFeedback>
   );
 };
 
-const BrowsableList = ({ style, data }) => {
+const BrowsableList = ({ style, data, onPress }) => {
   return (
     <View style={[style, styles.container]}>
       <FlatList
@@ -61,7 +67,7 @@ const BrowsableList = ({ style, data }) => {
         renderItem={({ item }) => {
           return (
             <View>
-              <ListItem data={item} />
+              <ListItem data={item} onClick={() => onPress(item)} />
               <View style={styles.line} />
             </View>
           );
@@ -69,6 +75,11 @@ const BrowsableList = ({ style, data }) => {
         keyExtractor={(item, index) =>
           `#browsable-analytics-${index}-${item.type}`
         }
+        ListEmptyComponent={(
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyText}>No Data</Text>
+          </View>
+        )}
       />
     </View>
   );
@@ -98,10 +109,26 @@ const styles = StyleSheet.create({
     color: colors.caption,
     width: getScreenWidth() - 3 * dimens.d12 - icons.lg - dimens.d4,
   },
+  listItemContent: {
+    ...commonFontFamilies,
+    fontSize: texts.md,
+    color: colors.darker,
+    width: getScreenWidth() - 3 * dimens.d12 - icons.lg - dimens.d4,
+  },
   line: {
     height: 1,
     width: '100%',
     backgroundColor: colors.muted,
+  },
+  emptyContainer: {
+    height: getScreenHeight() / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  emptyText: {
+    fontFamily: 'Inter-Regular',
+    fontSize: texts.sm,
+    color: colors.caption,
   },
 });
 
