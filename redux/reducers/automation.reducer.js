@@ -4,10 +4,14 @@ const INITIAL_STATES = {
   security: [],
   time: [
     {
-      name: 'Open Office',
+      name: 'Rise and Shine',
+      time: 'Everyday, 07:00',
+      todo: 'Turn off AC at Bedroom',
     },
     {
-      name: 'Close Office',
+      name: 'Time to Rest',
+      time: 'Everyday, 18:00',
+      todo: 'Turn on AC at Bedroom, set to 16°C',
     },
   ],
   motion: [],

@@ -37,7 +37,8 @@
     "react-native-unimodules": "^0.9.1",
     "react-native-vector-icons": "^6.6.0",
     "react-redux": "^7.2.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "victory-native": "^34.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",

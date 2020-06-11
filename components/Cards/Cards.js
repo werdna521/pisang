@@ -10,11 +10,22 @@ import {
 } from '../../utils/variables';
 import { BoxShadow } from 'react-native-shadow';
 import { getScreenWidth } from '../../utils/dimensions';
-import { TemperatureColored } from '../Icons/Icons';
+import { SocketColored, TemperatureColored } from '../Icons/Icons';
 
 export const DeviceCard = ({ style = {}, data }) => {
   const [_switchState, _setSwitchState] = useState(false);
   const [_height, _setHeight] = useState(0);
+
+  const renderIcon = () => {
+    switch (data.type) {
+      case 0:
+        return <TemperatureColored size={icons.sm} />;
+      case 1:
+        return <SocketColored size={icons.sm} />;
+      default:
+        return <TemperatureColored size={icons.sm} />;
+    }
+  };
 
   return (
     <BoxShadow setting={{ ...cardShadowSettings(_height), style }}>
@@ -25,10 +36,16 @@ export const DeviceCard = ({ style = {}, data }) => {
         }}
         style={{ ...styles.cardContainer, ...style }}
       >
-        <TemperatureColored size={icons.sm} />
+        {renderIcon()}
         <Text style={styles.cardLabel}>{data.label}</Text>
         <View style={styles.bottomContainer}>
-          <Text style={styles.cardValue}>{data.data.join(' / ')}</Text>
+          <Text style={styles.cardValue}>
+            {data.switch
+              ? _switchState
+                ? 'On'
+                : 'Off'
+              : data.data.join(' / ')}
+          </Text>
           {data.switch && (
             <Switch
               style={styles.switch}

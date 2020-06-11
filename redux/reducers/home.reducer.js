@@ -3,7 +3,13 @@ import { ADD_HOME_SENSOR } from '../actions/home.action';
 const INITIAL_STATES = [
   {
     location: 'Bedroom',
-    devices: [],
+    devices: [
+      {
+        type: 1,
+        label: 'Ostium',
+        switch: true,
+      },
+    ],
     sensors: [],
   },
 ];

@@ -13,8 +13,10 @@ const AutomationRules = ({ automationData }) => {
 
   const filterAutomationRules = () => {
     return automationData[automationCategory.title.toLowerCase()].map(
-      ({ name }) => ({
-        content: name,
+      ({ name, time, todo }) => ({
+        name,
+        time,
+        todo,
         type: automationCategory.type,
       }),
     );
@@ -23,7 +25,12 @@ const AutomationRules = ({ automationData }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{automationCategory.title}</Text>
-      <BrowsableList data={filterAutomationRules()} />
+      <BrowsableList
+        data={filterAutomationRules()}
+        onPress={(rule) =>
+          navigation.navigate('Automation/Rule/Details', { rule })
+        }
+      />
       <ActionBar
         add
         back

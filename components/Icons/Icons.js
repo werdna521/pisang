@@ -30,6 +30,17 @@ export const TemperatureIcon = ({ size, color, style }) => {
   return <Feather name="thermometer" size={size} color={color} style={style} />;
 };
 
+export const SocketIcon = ({ size, color, style }) => {
+  return (
+    <MaterialCommunityIcons
+      name="power-socket-eu"
+      size={size}
+      color={color}
+      style={style}
+    />
+  );
+};
+
 export const TimeIcon = ({ size, color, style }) => {
   return (
     <MaterialCommunityIcons
@@ -83,6 +94,16 @@ export const TemperatureColored = ({ size, style }) => {
       size={size}
       style={style}
       icon={TemperatureIcon(coloredIcons(size))}
+    />
+  );
+};
+
+export const SocketColored = ({ size, style }) => {
+  return (
+    <ColoredIcon
+      size={size}
+      style={style}
+      icon={SocketIcon(coloredIcons(size))}
     />
   );
 };

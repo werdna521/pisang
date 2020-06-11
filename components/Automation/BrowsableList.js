@@ -45,8 +45,8 @@ const ListItem = ({ data, onClick }) => {
       <View style={styles.listItemContainer}>
         {renderIcon()}
         <View style={styles.listItemTextContainer}>
-          {data.content ? (
-            <Text style={styles.listItemContent}>{data.content}</Text>
+          {data.name ? (
+            <Text style={styles.listItemContent}>{data.name}</Text>
           ) : (
             <>
               <Text style={styles.listItemTitle}>{data.title}</Text>
@@ -75,11 +75,11 @@ const BrowsableList = ({ style, data, onPress }) => {
         keyExtractor={(item, index) =>
           `#browsable-analytics-${index}-${item.type}`
         }
-        ListEmptyComponent={(
+        ListEmptyComponent={
           <View style={styles.emptyContainer}>
             <Text style={styles.emptyText}>No Data</Text>
           </View>
-        )}
+        }
       />
     </View>
   );
